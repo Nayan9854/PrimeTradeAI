@@ -14,26 +14,21 @@ export const signup = async (req: Request, res: Response) => {
 
     const { name, email, password } = req.body;
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already in use' });
     }
 
-    // Hash password
     const hashedPassword = await bcryptjs.hash(password, 10);
 
-    // Create user
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
     });
 
-    // Generate token
     const token = generateToken(user._id.toString());
 
-    // Return user without password
     const userResponse = {
       id: user._id,
       name: user.name,
@@ -56,27 +51,19 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const { email, password } = req.body;
-    console.log('Login attempt for email:', email);
 
-    // Find user
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
-      console.log('User not found:', email);
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    // Compare password
     const isPasswordValid = await bcryptjs.compare(password, user.password);
     if (!isPasswordValid) {
-      console.log('Password invalid for user:', email);
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    // Generate token
     const token = generateToken(user._id.toString());
-    console.log('Login successful for user:', email, 'Token:', token);
 
-    // Return user without password
     const userResponse = {
       id: user._id.toString(),
       name: user.name,
@@ -84,7 +71,6 @@ export const login = async (req: Request, res: Response) => {
       createdAt: user.createdAt,
     };
 
-    console.log('Sending response:', { token, user: userResponse });
     res.json({ token, user: userResponse });
   } catch (error) {
     console.error('Login error:', error);

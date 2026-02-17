@@ -90,7 +90,6 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-      {/* Header */}
       <header className="bg-slate-800 border-b border-slate-700 shadow-lg sticky top-0 z-50">
         <div className="container-custom py-6 flex justify-between items-center">
           <div>
@@ -103,9 +102,7 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="container-custom py-8 space-y-8">
-        {/* Profile Section */}
         <div className="card">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
@@ -125,7 +122,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Tasks Section */}
         <div className="card">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-3">
@@ -148,7 +144,6 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* Search and Filter */}
           <div className="mb-8 space-y-4">
             <input
               type="text"
@@ -175,7 +170,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Task List */}
           <TaskList
             tasks={filteredTasks}
             onTaskDeleted={handleTaskDeleted}

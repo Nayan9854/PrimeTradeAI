@@ -5,12 +5,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 relative overflow-hidden">
-      {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
       <div className="max-w-2xl w-full text-center relative z-10">
-        {/* Logo */}
         <div className="mb-12">
           <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4 animate-pulse">
             PrimeTradeAI
@@ -19,7 +17,6 @@ export default function Home() {
           <p className="text-slate-500 mt-2">Boost your productivity with intelligent task management</p>
         </div>
 
-        {/* Feature highlights */}
         <div className="grid grid-cols-3 gap-4 mb-12">
           <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
             <div className="text-2xl mb-2">⚡</div>
@@ -35,7 +32,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CTA Buttons */}
         <div className="space-y-3 max-w-sm mx-auto">
           <a href="/login" className="block">
             <button
@@ -55,7 +51,6 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Footer text */}
         <div className="mt-12 text-slate-500 text-sm">
           <p>Secure authentication with JWT tokens • Data stored safely in MongoDB</p>
         </div>

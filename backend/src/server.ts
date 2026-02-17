@@ -6,18 +6,15 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import taskRoutes from './routes/taskRoutes';
 
-// Load environment variables
 dotenv.config();
 
 const app: Express = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/primetradeai';
 
-// Middleware
 app.use(helmet());
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests from localhost on any port for development
     if (!origin || origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) {
       callback(null, true);
     } else if (process.env.CORS_ORIGIN && origin === process.env.CORS_ORIGIN) {
@@ -31,13 +28,12 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to MongoDB
 async function connectDB() {
   try {
     await mongoose.connect(MONGODB_URI);
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
   } catch (error) {
-    console.error('❌ MongoDB connection failed:', error);
+    console.error('MongoDB connection failed:', error);
     process.exit(1);
   }
 }
